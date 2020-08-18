@@ -6,8 +6,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+
 ## Laravel Blog Project - Multi Role Login Sytem
+
 Check out on youtube -> https://www.youtube.com/playlist?list=PL397yT3D1n9g-WZrBKonJol3DCcxnwZNs
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
