@@ -35,6 +35,11 @@
                         <i class="menu-icon fa fa-user"></i>Users
                     </a>
                 </li>
+                <li class="active">
+                    <a href="{{route('admin.category.index')}}">
+                        <i class="menu-icon fa fa-file"></i>Categories
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
