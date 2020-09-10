@@ -8,6 +8,7 @@ use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
@@ -52,8 +53,14 @@ class CategoryController extends Controller
         if (!Storage::disk('public')->exists('category')) {
             Storage::disk('public')->makeDirectory('category');
         }
-        // Store
-        $image->storeAs('category', $imageName, 'public');
+
+        $categoryImg = Image::make($image)->resize(640, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->stream();
+
+        // Store in storage public/category
+        Storage::disk('public')->put('category/' . $imageName, $categoryImg); //The put method may be used to store raw file contents on a disk
 
         //
         $category = new Category();
@@ -127,7 +134,12 @@ class CategoryController extends Controller
                 Storage::disk('public')->delete('category/' . $category->image);
             }
             // Store
-            $image->storeAs('category', $imageName, 'public');
+            // $image->storeAs('category', $imageName, 'public');
+            $categoryImg = Image::make($image)->resize(640, null, function ($constraint) {
+                $constraint->aspectRatio();
+                $constraint->upsize();
+            })->stream();
+            Storage::disk('public')->put('category/' . $imageName, $categoryImg); //The put method may be used to store raw file contents on a disk
         } else {
             $imageName = $category->image;
         }
