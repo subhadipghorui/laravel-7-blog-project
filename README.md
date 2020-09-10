@@ -7,19 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Laravel 7 Blog Project 
+<<<<<<< HEAD
+
+## Laravel 7 Blog Project
+
+=======
+
+## Laravel Blog Project - Multi Role Login Sytem
+
+> > > > > > > beb8b645a6b16dd3e435ea6883cf01a7f2b83d94
 
 This is the long tutorial serise of Laravel Blog Project on youtube.
 Check it out -> https://www.youtube.com/playlist?list=PL397yT3D1n9g-WZrBKonJol3DCcxnwZNs
 
 ## Instruction
+
 Download or git clone it.
 Run composer install
 Edit .env file and setup database credentials.
-Run migration to database - php artisan migrate 
+Run migration to database - php artisan migrate
 Run seed - php artisan db:seed
 run the app - php artisan serve
-
 
 ## License
 
