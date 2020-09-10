@@ -40,6 +40,11 @@
                         <i class="menu-icon fa fa-file"></i>Categories
                     </a>
                 </li>
+                <li class="active">
+                    <a href="{{route('admin.post.index')}}">
+                        <i class="menu-icon fa fa-file"></i>Posts
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
