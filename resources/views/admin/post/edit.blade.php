@@ -52,7 +52,7 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="tag" class=" form-control-label">Tags</label></div>
                                         <div class="col-12 col-md-9">
-                                            <input type="text" id="tag" name="tags" placeholder="Tag (separated by ,)" class="form-control" value="tag">
+                                            <input type="text" id="tag" name="tags" placeholder="Tag (separated by ,)" class="form-control" value="@foreach($post->tags as $key=>$tag) {{$key+1 < count($post->tags) ? $tag->name. ',' : $tag->name}} @endforeach">
                                         </div>
                                     </div>
                                     <div class="row form-group">

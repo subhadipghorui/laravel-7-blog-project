@@ -45,6 +45,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // dd(explode(',', $request->tags));
         $this->validate($request, [
             'title' => 'required|max:255|unique:posts',
             'image' => 'required|mimes:jpg,png,bmp,jpeg',
@@ -78,6 +79,14 @@ class PostController extends Controller
             $post->status = 1;
         }
         $post->save();
+
+        $tags = [];
+        $stingTags = array_map('trim', explode(',', $request->tags));
+        foreach ($stingTags as $tag) {
+            array_push($tags, ['name' => $tag]);
+        }
+        $post->tags()->createMany($tags);
+
         Toastr::success('Post Successfully Saved', 'success');
         return redirect()->route('admin.post.index');
     }
@@ -169,6 +178,14 @@ class PostController extends Controller
             $post->status = false;
         }
         $post->save();
+        // delete old tags
+        $post->tags()->delete();
+        $tags = [];
+        $stingTags = array_map('trim', explode(',', $request->tags));
+        foreach ($stingTags as $tag) {
+            array_push($tags, ['name' => $tag]);
+        }
+        $post->tags()->createMany($tags);
         Toastr::success('Post Successfully Saved', 'success');
 
         return redirect()->route('admin.post.index');
@@ -187,6 +204,8 @@ class PostController extends Controller
         if (Storage::disk('public')->exists('post/' . $post->image)) {
             Storage::disk('public')->delete('post/' . $post->image);
         }
+        // Delete Tags
+        $post->tags()->delete();
         $post->delete();
         Toastr::success('Post Successfully Deleted :)', 'success');
 
