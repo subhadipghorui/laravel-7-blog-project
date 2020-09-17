@@ -24,6 +24,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Admin ////////////////////////////////////////////////////////////////////////
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('profile', 'DashboardController@showProfile')->name('profile');
+    Route::put('profile', 'DashboardController@updateProfile')->name('profile.update');
+    Route::put('profile/password', 'DashboardController@changePassword')->name('profile.password');
     Route::resource('user', 'UserController')->except(['create', 'show', 'edit', 'store']);
     Route::resource('category', 'CategoryController')->except(['create', 'show', 'edit']);
     Route::resource('post', 'PostController');
