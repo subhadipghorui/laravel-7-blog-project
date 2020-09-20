@@ -16,7 +16,7 @@
             <div class="page-title">
                 <ol class="breadcrumb text-right">
                     <li>Dashboard</li>
-                    <li class="active">Pofile</li>
+                    <li class="active">Profile</li>
                 </ol>
             </div>
         </div>
