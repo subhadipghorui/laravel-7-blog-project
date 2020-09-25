@@ -24,11 +24,10 @@
                         @endif
 
                     </div>
-                    <div class="col-md-12">
+                    <div class="col-md-12" style="width: 80vw">
                         <div class="card">
                             <div class="card-header">
-
-                            </button>
+                                Create Post
                             </div>
                             <div class="card-body">
                                 <form action="{{route('admin.post.store')}}" method="POST" enctype="multipart/form-data" class="form-horizontal">
