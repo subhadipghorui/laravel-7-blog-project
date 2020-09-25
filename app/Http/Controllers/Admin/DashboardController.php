@@ -25,13 +25,24 @@ class DashboardController extends Controller
     }
     public function updateProfile(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'userid' => 'required|unique:users',
-            'about' => 'sometimes|max:255',
-            'image' => 'sometimes|image|mimes:jpg,png,bmp,jpeg|max:2000'
+        // Fix the update issue
+        if ($request->name == User::findOrFail(Auth::id())->name) {
+            $this->validate($request, [
+                'name' => 'required',
+                'userid' => 'required',
+                'about' => 'sometimes|max:255',
+                'image' => 'sometimes|image|mimes:jpg,png,bmp,jpeg|max:2000'
 
-        ]);
+            ]);
+        } else {
+            $this->validate($request, [
+                'name' => 'required',
+                'userid' => 'required|unique:users',
+                'about' => 'sometimes|max:255',
+                'image' => 'sometimes|image|mimes:jpg,png,bmp,jpeg|max:2000'
+
+            ]);
+        }
         $user = User::findOrFail(Auth::user()->id);
         if ($request->image != null) {
             // Image
