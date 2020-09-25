@@ -1,7 +1,6 @@
 @extends('layouts.frontend.app')
 
 @section('content')
-
 <!-- Start top-section Area -->
 <section class="top-section-area section-gap">
   <div class="container">
@@ -33,31 +32,31 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
           <div class="single-page-post">
-            <img class="img-fluid" src="{{asset('storage/post/'.$post->image)}}" alt="" />
+            <img class="img-fluid" src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->image}}" />
             <div class="top-wrapper">
               <div class="row d-flex justify-content-between">
                 <h2 class="col-lg-8 col-md-12 text-uppercase">
-                {{$post->title}}
+               {{$post->title}}
                 </h2>
                 <div
                   class="col-lg-4 col-md-12 right-side d-flex justify-content-end"
                 >
                   <div class="desc">
-                    <h2>{{$post->user()}}</h2>
+                    <h2>{{$post->user->name}}</h2>
                     <h3>{{$post->created_at->diffForHumans()}}</h3>
                   </div>
                   <div class="user-img">
-                    {{-- <img src="{{$post->user->image}}" alt="" /> --}}
+                    <img src="{{asset('storage/user/'.$post->user->image)}}" alt="{{$post->user->name}}"  width="50px"/>
                   </div>
                 </div>
               </div>
+              <h4 class="text-muted">{{$post->category->name}}</h4>
             </div>
             <div class="tags">
               <ul>
-                <li><a href="#">lifestyle</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Fashion</a></li>
+                @foreach ($post->tags as $tag)
+                <li><a href="#">{{$tag->name}}</a></li>
+                @endforeach
               </ul>
             </div>
             <div class="single-post-content">
@@ -99,41 +98,6 @@
                 </div>
               </div>
             </div>
-
-            <!-- Start nav Area -->
-            <section class="nav-area pt-50 pb-100">
-              <div class="container">
-                <div class="row justify-content-between">
-                  <div
-                    class="col-sm-6 nav-left justify-content-start d-flex"
-                  >
-                    <div class="thumb">
-                      <img src="img/prev.jpg" alt="" />
-                    </div>
-                    <div class="details">
-                      <p>Prev Post</p>
-                      <h4 class="text-uppercase">
-                        <a href="#">A Discount Toner</a>
-                      </h4>
-                    </div>
-                  </div>
-                  <div
-                    class="col-sm-6 nav-right justify-content-end d-flex"
-                  >
-                    <div class="details">
-                      <p>Prev Post</p>
-                      <h4 class="text-uppercase">
-                        <a href="#">A Discount Toner</a>
-                      </h4>
-                    </div>
-                    <div class="thumb">
-                      <img src="img/next.jpg" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <!-- End nav Area -->
 
             <!-- Start comment-sec Area -->
             <section class="comment-sec-area pt-80 pb-80">
@@ -284,99 +248,73 @@
           </div>
         </div>
         <div class="col-lg-4 sidebar-area">
-            <div class="single_widget search_widget">
-              <div id="imaginary_container">
-                <div class="input-group stylish-input-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search"
-                  />
-                  <span class="input-group-addon">
-                    <button type="submit">
-                      <span class="lnr lnr-magnifier"></span>
-                    </button>
-                  </span>
-                </div>
+          <div class="single_widget search_widget">
+            <div id="imaginary_container">
+              <div class="input-group stylish-input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Search"
+                />
+                <span class="input-group-addon">
+                  <button type="submit">
+                    <span class="lnr lnr-magnifier"></span>
+                  </button>
+                </span>
               </div>
-            </div>
-            <div class="single_widget cat_widget">
-              <h4 class="text-uppercase pb-20">post categories</h4>
-              <ul>
-                @foreach ($categories as $category)
-                <li>
-                    <a href="#">{{$category->name}} <span>{{$category->posts->count()}}</span></a>
-                  </li>
-                @endforeach
-              </ul>
-            </div>
-
-            <div class="single_widget recent_widget">
-              <h4 class="text-uppercase pb-20">Recent Posts</h4>
-              <div class="active-recent-carusel">
-                <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
-                <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
-                <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="single_widget tag_widget">
-              <h4 class="text-uppercase pb-20">Tag Clouds</h4>
-              <ul>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Art</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Technology</a></li>
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Food</a></li>
-                <li><a href="#">Technology</a></li>
-              </ul>
             </div>
           </div>
+          <div class="single_widget cat_widget">
+            <h4 class="text-uppercase pb-20">post categories</h4>
+            <ul>
+              <li>
+                <a href="#">Technology <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Lifestyle <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Fashion <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Art <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Food <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Architecture <span>37</span></a>
+              </li>
+              <li>
+                <a href="#">Adventure <span>37</span></a>
+              </li>
+            </ul>
+          </div>
 
+          <div class="single_widget recent_widget">
+            <h4 class="text-uppercase pb-20">Recent Posts</h4>
+            <div class="active-recent-carusel">
+            @foreach ($posts as $latestPost)
+            <div class="item">
+                <img src="{{asset('storage/post/'.$latestPost->image)}}" alt="{{$latestPost->image}}" width="200px" />
+                <a href="{{route('post', $post->slug)}}">
+                <p class="mt-20 title text-uppercase">
+                    {{$latestPost->title}}
+                </p>
+                </a>
+                <p>
+                {{$latestPost->created_at->diffForHumans()}}
+                  <span>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> 06
+                    <i class="fa fa-comment-o" aria-hidden="true"></i
+                    >02</span
+                  >
+                </p>
+              </div>
+            @endforeach
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

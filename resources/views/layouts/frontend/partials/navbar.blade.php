@@ -11,9 +11,9 @@
               <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
                 <ul class="navbar-nav scrollable-menu">
                     <li><a href="/">Home</a></li>
-                    <li><a href="./posts.html">Posts</a></li>
-                    <li><a href="./categories.html">Categories</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="/posts">Posts</a></li>
+                    <li><a href="/categories">Categories</a></li>
+                    <li><a href="/#about">About</a></li>
                         <!-- Dropdown -->
                         <li class="dropdown">
                             <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">

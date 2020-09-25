@@ -37,7 +37,7 @@
                     <img class="img-fluid" src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->image}}" />
                     <div class="date mt-20 mb-20">{{$post->created_at->diffForHumans()}}</div>
                     <div class="detail">
-                      <a href="#"
+                      <a href="{{route('post', $post->slug)}}"
                         ><h4 class="pb-20">
                          {{$post->title}}
                         </h4></a
@@ -95,51 +95,24 @@
             <div class="single_widget recent_widget">
               <h4 class="text-uppercase pb-20">Recent Posts</h4>
               <div class="active-recent-carusel">
+                @foreach ($posts->take(3) as $latestPost)
                 <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
-                <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
-                <div class="item">
-                  <img src="img/asset/slider.jpg" alt="" />
-                  <p class="mt-20 title text-uppercase">
-                    Home Audio Recording <br />
-                    For Everyone
-                  </p>
-                  <p>
-                    02 Hours ago
-                    <span>
-                      <i class="fa fa-heart-o" aria-hidden="true"></i> 06
-                      <i class="fa fa-comment-o" aria-hidden="true"></i
-                      >02</span
-                    >
-                  </p>
-                </div>
+                <img src="{{asset('storage/post/'.$latestPost->image)}}" alt="{{$latestPost->image}}" width="200px" />
+                <a href="{{route('post', $post->slug)}}">
+                <p class="mt-20 title text-uppercase">
+                    {{$latestPost->title}}
+                </p>
+                </a>
+                <p>
+                {{$latestPost->created_at->diffForHumans()}}
+                  <span>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> 06
+                    <i class="fa fa-comment-o" aria-hidden="true"></i
+                    >02</span
+                  >
+                </p>
+              </div>
+            @endforeach
               </div>
             </div>
             <div class="single_widget tag_widget">
