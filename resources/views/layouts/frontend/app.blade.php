@@ -32,10 +32,12 @@
     <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
     <style>
-      .menu1{
-        /* border: 1px solid #333; */
-        margin-left: -5rem;
-      }
+    @media only screen and (min-width: 790px) {
+        .menu1{
+            /* border: 1px solid #333; */
+            margin-left: -5rem;
+            }
+        }
       .c1{
         color: #007bff;
       }
