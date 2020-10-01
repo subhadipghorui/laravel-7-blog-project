@@ -14,27 +14,46 @@
                     <li><a href="/posts">Posts</a></li>
                     <li><a href="/categories">Categories</a></li>
                     <li><a href="/#about">About</a></li>
+                    @if (Route::has('login'))
+                    @auth
                         <!-- Dropdown -->
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                                <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
-                                <!-- <i class="fas fa-user"></i> -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
+                            <!-- <i class="fas fa-user"></i> -->
+                        </a>
+                        <div class="dropdown-menu menu1">
+                            <a href="{{route('admin.profile')}}" class="dropdown-item" target="_blank"> <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{Auth::user()->name}}</a>
+                            @if (Auth::user()->role->id == 1)
+                            <a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
+                            @elseif(Auth::user()->role->id == 2)
+                            <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
+                            @else
+                            null
+                            @endif
+
+                            <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp; Favorite List</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; {{ __('Logout') }}
                             </a>
-                            <div class="dropdown-menu menu1">
-                                <a href="/admin/dashboard/profile" class="dropdown-item" target="_blank">Admin Subhadip</a>
-                              <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
-                              <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp; Favorite List</a>
 
-                              <a class="dropdown-item" href="/logout" onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout
-                           </a>
+                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                         @csrf
+                     </form>
 
-                           <form id="logout-form" action="/logout" method="POST" style="display: none;">
-                               <input type="hidden" name="_token" value="ePJORhim7paUxLLNT4uhKMeJSbwU4kZwpnHVl7Ph">                                       </form>
+                        </div>
+                    </li>
+                    @else
+                    <li><a href="{{ route('login') }}">Login</a></li>
 
-                            </div>
-                        </li>
+                    @if (Route::has('register'))
+                    <li><a href="{{ route('register') }}">Register</a></li>
+                    @endif
+                @endauth
+
+                 @endif
                 </ul>
               </div>
         </div>

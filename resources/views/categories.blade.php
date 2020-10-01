@@ -25,9 +25,8 @@
            @foreach ($categories as $category)
            <div class="col-lg-3 col-md-6 single-fashion">
             <img class="img-fluid" src="{{asset('storage/category/'.$category->image)}}" alt="{{$category->image}}" />
-            <p class="date">{{$category->created_at->diffForHumans()}}</p>
-            <h4><a href="#">{{$category->name}}</p>
-            <br>
+            <p class="date">{{$category->created_at->format('D, d M Y H:i')}}</p>
+            <a href="{{route('category.post',$category->slug)}}"><h4>{{$category->name}}</h4></a>
           </div>
            @endforeach
           </div>
