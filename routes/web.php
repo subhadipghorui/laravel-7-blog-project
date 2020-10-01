@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Post;
+use App\Tag;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,7 @@ Route::get('/post/{slug}', 'HomeController@post')->name('post');
 Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/category/{slug}', 'HomeController@categoryPost')->name('category.post');
 Route::get('/search', 'HomeController@search')->name('search');
+Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
 
 
 
@@ -51,6 +53,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 // View Composer
 View::composer('layouts.frontend.partials.sidebar', function ($view) {
     $categories = Category::all()->take(10);
+    $recentTags = Tag::all();
     $recentPosts = Post::latest()->take(3)->get();
-    return $view->with('categories', $categories)->with('recentPosts', $recentPosts);
+    return $view->with('categories', $categories)->with('recentPosts', $recentPosts)->with('recentTags', $recentTags);
 });

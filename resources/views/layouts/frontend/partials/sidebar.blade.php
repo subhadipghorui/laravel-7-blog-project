@@ -35,7 +35,7 @@
         @foreach ($recentPosts as $recentPost)
         <div class="item">
         <img src="{{asset('storage/post/'.$recentPost->image)}}" alt="{{$recentPost->image}}" width="200px" />
-        <a href="{{route('post', $post->slug)}}">
+        <a href="{{route('post', $recentPost->slug)}}">
         <p class="mt-20 title text-uppercase">
             {{$recentPost->title}}
         </p>
@@ -55,15 +55,9 @@
     <div class="single_widget tag_widget">
       <h4 class="text-uppercase pb-20">Tag Clouds</h4>
       <ul>
-        <li><a href="#">Lifestyle</a></li>
-        <li><a href="#">Art</a></li>
-        <li><a href="#">Adventure</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Fashion</a></li>
-        <li><a href="#">Adventure</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Technology</a></li>
+       @foreach ($recentTags->unique('name')->take(10) as $recentTag)
+       <li><a href="{{route('tag.posts', $recentTag->name)}}">{{$recentTag->name}}</a></li>
+       @endforeach
       </ul>
     </div>
   </div>
