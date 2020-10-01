@@ -42,6 +42,17 @@
         color: #007bff;
       }
     </style>
+    {{-- Fix Drop Down menu --}}
+    <script>
+        function dropMenu(){
+        var dropmenu = document.getElementById('dropMenu');
+            if (dropmenu.style.display === "none") {
+                dropmenu.style.display = "block";
+            } else {
+                dropmenu.style.display = "none";
+            }
+            }
+    </script>
   </head>
   <body>
     <!-- Start Header Area -->

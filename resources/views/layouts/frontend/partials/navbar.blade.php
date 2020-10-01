@@ -18,11 +18,10 @@
                     @auth
                         <!-- Dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown" onclick="dropMenu()">
                             <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
-                            <!-- <i class="fas fa-user"></i> -->
                         </a>
-                        <div class="dropdown-menu menu1">
+                        <div class="dropdown-menu menu1" style="display: none" id="dropMenu">
                             <a href="{{route('admin.profile')}}" class="dropdown-item" target="_blank"> <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{Auth::user()->name}}</a>
                             @if (Auth::user()->role->id == 1)
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
@@ -39,11 +38,12 @@
                                 <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; {{ __('Logout') }}
                             </a>
 
-                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                         @csrf
-                     </form>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
 
                         </div>
+
                     </li>
                     @else
                     <li><a href="{{ route('login') }}">Login</a></li>

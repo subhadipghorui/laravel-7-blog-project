@@ -34,8 +34,10 @@
     <style>
       .menu1{
         /* border: 1px solid #333; */
-        margin-left: -5rem; 
+        margin-left: -5rem;
+
       }
+
       .c1{
         color: #007bff;
       }
@@ -53,17 +55,17 @@
                   <span class="lnr lnr-menu"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent" >
                   <ul class="navbar-nav scrollable-menu">
                       <li><a href="/">Home</a></li>
                       <li><a href="./posts.html">Posts</a></li>
                       <li><a href="./categories.html">Categories</a></li>
                       <li><a href="#about">About</a></li>
-                          <!-- Dropdown -->
+                        <!-- ll
                           <li class="dropdown">
                               <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                                   <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
-                                  <!-- <i class="fas fa-user"></i> -->
+
                               </a>
                               <div class="dropdown-menu menu1">
                                   <a href="/admin/dashboard/profile" class="dropdown-item" target="_blank">Admin Subhadip</a>
@@ -79,7 +81,38 @@
                                  <input type="hidden" name="_token" value="ePJORhim7paUxLLNT4uhKMeJSbwU4kZwpnHVl7Ph">                                       </form>
 
                               </div>
-                          </li>
+                          </li> -->
+                      <!-- Dropdown -->
+                      <li class="dropdown">
+                        <a href="#"  onclick="dropMenu()">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;
+                            <!-- <i class="fas fa-user"></i> -->
+                        </a>
+                        <div id="dropMenu" class="dropdown-menu menu1" style="display: none;">
+                            <a href="/admin/dashboard/profile" class="dropdown-item" target="_blank">Admin Subhadip</a>
+                          <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
+                          <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp; Favorite List</a>
+
+                          <a class="dropdown-item" href="/logout" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp; Logout
+                       </a>
+
+                       <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                           <input type="hidden" name="_token" value="ePJORhim7paUxLLNT4uhKMeJSbwU4kZwpnHVl7Ph">                                       </form>
+
+                        </div>
+                    </li>
+                    <script>
+                        function dropMenu(){
+                        var dropmenu = document.getElementById('dropMenu');
+                            if (dropmenu.style.display === "none") {
+                                dropmenu.style.display = "block";
+                            } else {
+                                dropmenu.style.display = "none";
+                            }
+                            }
+                    </script>
                   </ul>
                 </div>
           </div>
@@ -191,12 +224,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>5</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
@@ -212,12 +245,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>3</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
@@ -233,12 +266,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 1</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>1</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
@@ -253,12 +286,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 1</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>1</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
@@ -273,12 +306,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 1</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>2</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
@@ -294,12 +327,12 @@
 								<br>
 								</p><ul class="d-flex space-around">
 																	<li><a href="javascript:void(0);" onclick=" toastr.info('To add to your favorite list you have to login first.', 'Info', { closeButton: true, progressBar: true, })"><i class="fa fa-heart-o" aria-hidden="true"></i><span> 0</span></a></li>
-	
-	
+
+
 																<li><i class="fa fa-comment-o" aria-hidden="true"></i><span> 0</span></li>
 									<li><i class="fa fa-eye" aria-hidden="true"></i> <span>0</span></li>
 								</ul>
-	
+
 						<p></p>
 						</div>
 					</div>
