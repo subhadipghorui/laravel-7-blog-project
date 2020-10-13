@@ -31,7 +31,7 @@ Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/category/{slug}', 'HomeController@categoryPost')->name('category.post');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
-Route::post('/comment/{post}', 'CommentController@store')->name('comment.store');
+Route::post('/comment/{post}', 'CommentController@store')->name('comment.store')->middleware('auth'); // redirect if not logged in
 
 
 // Admin ////////////////////////////////////////////////////////////////////////
