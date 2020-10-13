@@ -32,6 +32,7 @@ Route::get('/category/{slug}', 'HomeController@categoryPost')->name('category.po
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
 Route::post('/comment/{post}', 'CommentController@store')->name('comment.store');
+Route::post('/comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store');
 
 
 // Admin ////////////////////////////////////////////////////////////////////////
@@ -45,6 +46,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('post', 'PostController');
     Route::get('/comments', 'CommentController@index')->name('comment.index');
     Route::delete('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
+    Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
+    Route::delete('/reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
 });
 
 // User ////////////////////////////////////////////////////////////////////////
@@ -52,6 +55,8 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('comments', 'CommentController@index')->name('comment.index');
     Route::delete('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
+    Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
+    Route::delete('/reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
 });
 
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Comment;
+use App\CommentReply;
 use App\Http\Controllers\Controller;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -19,6 +20,8 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         if ($comment->user_id == Auth::id()) {
+            // Delete replies
+            $replies = CommentReply::where('comment_id', $id)->delete();
             $comment->delete();
             Toastr::success('Comment successfully deleted :)');
             return redirect()->back();

@@ -51,6 +51,11 @@
                         <i class="menu-icon fa fa-file"></i>Comments
                     </a>
                 </li>
+                <li class="active">
+                    <a href="{{route('admin.reply-comment.index')}}">
+                        <i class="menu-icon fa fa-file"></i>Replied Comments
+                    </a>
+                </li>
             </ul>
             @else
             <ul class="nav navbar-nav">
@@ -65,6 +70,11 @@
                 <li class="active">
                     <a href="{{route('user.comment.index')}}">
                         <i class="menu-icon fa fa-file"></i>Comments
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="{{route('user.reply-comment.index')}}">
+                        <i class="menu-icon fa fa-file"></i>Replied Comments
                     </a>
                 </li>
             </ul>

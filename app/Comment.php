@@ -14,4 +14,7 @@ class Comment extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function replies(){
+        return $this->hasMany('App\CommentReply');
+    }
 }

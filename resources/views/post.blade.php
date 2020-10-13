@@ -106,77 +106,94 @@
                   <h5 class="text-uppercase pb-80">05 Comments</h5>
                   <br />
                  @foreach ($post->comments as $comment)
-                 <div class="comment-list">
-                    <div
-                      class="single-comment justify-content-between d-flex"
-                    >
-                      <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                          <img src="{{asset('storage/user/'.$comment->user->image)}}" alt="{{$comment->user->image}}" width="50px" />
-                        </div>
-                        <div class="desc">
-                          <h5><a href="#">{{$comment->user->name}}</a></h5>
-                          <p class="date">{{$comment->created_at->format('D, d M Y H:i')}}</p>
-                          <p class="comment">
-                            {{$comment->comment}}
-                          </p>
+                <div class="comment">
+                      <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                          <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+                              <img src="{{asset('storage/user/'.$comment->user->image)}}" alt="{{$comment->user->image}}" width="50px">
+                            </div>
+                            <div class="desc">
+                              <h5><a href="#">{{$comment->user->name}}</a></h5>
+                              <p class="date">{{$comment->created_at->format('D, d M Y H:i')}}</p>
+                              <p class="comment">
+                                {{$comment->comment}}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="">
+                            <button class="btn-reply text-uppercase" id="reply-btn"
+                              onclick="showReplyForm('{{$comment->id}}','{{$comment->user->name}}')">reply</button
+                            >
+                          </div>
                         </div>
                       </div>
-                      <div class="reply-btn">
-                        <a href="" class="btn-reply text-uppercase"
-                          >reply</a
+                    @if($comment->replies->count() > 0)
+                      @foreach ($comment->replies as $reply)
+                      <div class="comment-list left-padding">
+                        <div
+                          class="single-comment justify-content-between d-flex"
                         >
-                      </div>
-                    </div>
-                  </div>
-                 @endforeach
-                  {{--  <div class="comment-list left-padding">
-                    <div
-                      class="single-comment justify-content-between d-flex"
-                    >
-                      <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                          <img src="img/asset/c2.jpg" alt="" />
-                        </div>
-                        <div class="desc">
-                          <h5><a href="#">Emilly Blunt</a></h5>
-                          <p class="date">December 4, 2017 at 3:12 pm</p>
-                          <p class="comment">
-                            Never say goodbye till the end comes!
-                          </p>
-                        </div>
-                      </div>
-                      <div class="reply-btn">
-                        <a href="" class="btn-reply text-uppercase"
-                          >reply</a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                  <div class="comment-list left-padding">
-                    <div
-                      class="single-comment justify-content-between d-flex"
-                    >
-                      <div class="user justify-content-between d-flex">
-                        <div class="thumb">
-                          <img src="img/asset/c3.jpg" alt="" />
-                        </div>
-                        <div class="desc">
-                          <h5><a href="#">Emilly Blunt</a></h5>
-                          <p class="date">December 4, 2017 at 3:12 pm</p>
-                          <p class="comment">
-                            Never say goodbye till the end comes!
-                          </p>
+                          <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+                              <img src="{{asset('storage/user/'.$reply->user->image)}}" alt="{{$reply->user->image}}" width="50px"/>
+                            </div>
+                            <div class="desc">
+                              <h5><a href="#">{{$reply->user->name}}</a></h5>
+                              <p class="date">{{$reply->created_at->format('D, d M Y H:i')}}</p>
+                              <p class="comment">
+                                {{$reply->message}}
+                              </p>
+                            </div>
+                          </div>
+                          <div class="">
+                            <button class="btn-reply text-uppercase" id="reply-btn"
+                              onclick="showReplyForm('{{$comment->id}}','{{$reply->user->name}}')">reply</button
+                            >
+                          </div>
                         </div>
                       </div>
-                      <div class="reply-btn">
-                        <a href="" class="btn-reply text-uppercase"
-                          >reply</a
-                        >
-                      </div>
-                    </div>
-                  </div>  --}}
 
+                      @endforeach
+                    @else
+                    @endif
+                      <div class="comment-list left-padding" id="reply-form-{{$comment->id}}" style="display: none">
+                        <div
+                          class="single-comment justify-content-between d-flex"
+                        >
+                          <div class="user justify-content-between d-flex">
+                            <div class="thumb">
+                              <img src="img/asset/c2.jpg" alt="" />
+                            </div>
+                            <div class="desc">
+                              <h5><a href="#">Goerge Stepphen</a></h5>
+                              <p class="date">December 4, 2017 at 3:12 pm</p>
+                              <div class="row flex-row d-flex">
+                              <form action="{{route('reply.store',$comment->id)}}" method="POST">
+                              @csrf
+                                <div class="col-lg-12">
+                                  <textarea
+                                    id="reply-form-{{$comment->id}}-text"
+                                    cols="60"
+                                    rows="2"
+                                    class="form-control mb-10"
+                                    name="message"
+                                    placeholder="Messege"
+                                    onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Messege'"
+                                    required=""
+                                  ></textarea>
+                                </div>
+                                <button type="submit" class="btn-reply text-uppercase ml-3">Reply</button>
+                              </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+
+                 @endforeach
                 </div>
               </div>
             </section>
@@ -221,3 +238,20 @@
 </div>
 <!-- End post Area -->
 @endsection
+@push('footer')
+    <script type="text/javascript">
+    function showReplyForm(commentId,user) {
+      var x = document.getElementById(`reply-form-${commentId}`);
+      var input = document.getElementById(`reply-form-${commentId}-text`);
+
+      if (x.style.display === "none") {
+        x.style.display = "block";
+        input.innerText=`@${user} `;
+
+      } else {
+        x.style.display = "none";
+      }
+    }
+
+    </script>
+@endpush
