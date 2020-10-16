@@ -105,7 +105,7 @@
                 <div class="row flex-column">
                   <h5 class="text-uppercase pb-80">{{$post->comments->count()}} Comments</h5>
                   <br />
-                 @foreach ($post->comments as $comment)
+                @foreach ($post->comments as $comment)
                 <div class="comment">
                       <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
@@ -117,7 +117,7 @@
                               <h5><a href="#">{{$comment->user->name}}</a></h5>
                               <p class="date">{{$comment->created_at->format('D, d M Y H:i')}}</p>
                               <p class="comment">
-                                {{$comment->comment}}
+                                {{$comment->message}}
                               </p>
                             </div>
                           </div>
@@ -163,7 +163,7 @@
                         >
                           <div class="user justify-content-between d-flex">
                             <div class="thumb">
-                              <img src="{{asset('storage/user/'.Auth::user()->image)}}" alt="{{Auth::user()->image}}" />
+                              <img src="{{asset('storage/user/'.Auth::user()->image)}}" alt="{{Auth::user()->image}}" width="50px"/>
                             </div>
                             <div class="desc">
                               <h5><a href="#">{{Auth::user()->name}}</a></h5>
@@ -214,7 +214,7 @@
                               @csrf
                           <textarea
                             class="form-control mb-10"
-                            name="comment"
+                            name="message"
                             placeholder="Messege"
                             onfocus="this.placeholder = ''"
                             onblur="this.placeholder = 'Messege'"

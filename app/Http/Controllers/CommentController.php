@@ -11,11 +11,11 @@ class CommentController extends Controller
 {
     public function store(Request $request, $post)
     {
-        $this->validate($request, ['comment' => 'required|max:1000']);
+        $this->validate($request, ['message' => 'required|max:1000']); //change comment field to message
         $comment = new Comment();
         $comment->post_id = $post;
         $comment->user_id = Auth::id();
-        $comment->comment = $request->comment;
+        $comment->message = $request->message; //change comment field to message
         $comment->save();
 
         // Success message

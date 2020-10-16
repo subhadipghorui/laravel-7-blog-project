@@ -68,7 +68,7 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$reply_comment->message}}</td>
-                                            <td>{{$reply_comment->comment->comment}}</td>
+                                            <td>{{$reply_comment->comment->message}}</td>
                                             <td><a href="{{route('post',$reply_comment->comment->post->slug)}}">{{$reply_comment->comment->post->title}}</a></td>
                                             <td>{{$reply_comment->created_at->diffForHumans()}}</td>
                                             <td>
