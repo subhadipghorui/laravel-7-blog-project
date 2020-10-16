@@ -69,7 +69,7 @@
                   lily and 4 people like this
                 </div>
                 <div class="col-lg-4 single-b-wrap col-md-12">
-                  <i class="fa fa-comment-o" aria-hidden="true"></i> 06
+                  <i class="fa fa-comment-o" aria-hidden="true"></i> {{$post->comments->count()}}
                   comments
                 </div>
                 <div class="col-lg-4 single-b-wrap col-md-12">
@@ -103,7 +103,7 @@
             <section class="comment-sec-area pt-80 pb-80">
               <div class="container">
                 <div class="row flex-column">
-                  <h5 class="text-uppercase pb-80">05 Comments</h5>
+                  <h5 class="text-uppercase pb-80">{{$post->comments->count()}} Comments</h5>
                   <br />
                  @foreach ($post->comments as $comment)
                 <div class="comment">
@@ -163,11 +163,11 @@
                         >
                           <div class="user justify-content-between d-flex">
                             <div class="thumb">
-                              <img src="img/asset/c2.jpg" alt="" />
+                              <img src="{{asset('storage/user/'.Auth::user()->image)}}" alt="{{Auth::user()->image}}" />
                             </div>
                             <div class="desc">
-                              <h5><a href="#">Goerge Stepphen</a></h5>
-                              <p class="date">December 4, 2017 at 3:12 pm</p>
+                              <h5><a href="#">{{Auth::user()->name}}</a></h5>
+                              <p class="date">{{date('D, d M Y H:i')}}</p>
                               <div class="row flex-row d-flex">
                               <form action="{{route('reply.store',$comment->id)}}" method="POST">
                               @csrf
