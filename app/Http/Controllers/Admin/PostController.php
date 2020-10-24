@@ -211,4 +211,8 @@ class PostController extends Controller
 
         return redirect()->route('admin.post.index');
     }
+    public function likedUsers($post){
+        $post = Post::findOrFail($post);
+        return view('admin.post.likedUsers',compact('post'));
+    }
 }

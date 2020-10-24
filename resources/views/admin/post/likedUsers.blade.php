@@ -49,39 +49,24 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Post Table</strong>
-                               <a href="{{route('admin.post.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+                                <strong class="card-title">{{$post->title}} Liked User Table</strong>
+                               
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Title</th>
-                                            <th>Slug</th>
-                                            <th>Views & Likes</th>
-                                            <th>Created_At</th>
-                                            <th>Action</th>
+                                            <th>User Name</th>
+                                            <th>User Id</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($posts as $key => $post)
+                                        @foreach ($post->likedUsers as $key => $likeUser)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$post->title}}</td>
-                                            <td>{{$post->slug}}</td>
-                                        <td><a href="{{route('admin.post.like.users', $post->id)}}" class="btn btn-danger" type="button"> <i class="fa fa-heart"></i> {{$post->likedUsers->count()}}</a> <button class="btn btn-info" type="button"><i class="fa fa-eye"></i> {{$post->view_count}}</button></td>
-                                            <td>{{$post->created_at}}</td>
-                                            <td>
-                                                <!-- Button trigger modal -->
-                                                <a href="{{route('admin.post.show', $post->id)}}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                                                <a href="{{route('admin.post.edit', $post->id)}}" class="btn btn-success"> <i class="fa fa-pencil"></i></a>
-
-                                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                    data-target="#deleteModal-{{$post->id}}">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </button>
-                                            </td>
+                                            <td>{{$likeUser->name}}</td>
+                                            <td>{{$likeUser->id}}</td>
                                         </tr>
                                         @endforeach
 
@@ -93,41 +78,7 @@
                     </div>
                 </div>
             </div>
-            <!-- .animated -->
-            <div class="animated">
-               @foreach ($posts  as $post)
-            <div class="modal fade" id="deleteModal-{{$post->id}}" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel"
-                data-backdrop="static" aria-hidden="true" style="display: none;">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticModalLabel">Delete Post</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                The Post will be deleted !!
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-danger" onclick="event.preventDefault();
-                            document.getElementById('deletepost-{{$post->id}}').submit();">Confirm</button>
-                    <form action="{{route('admin.post.destroy', $post->id)}}" style="display: none" id="deletepost-{{$post->id}}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                    </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-               @endforeach
-
-
-                <!-- .content -->
-            </div>
+        </div>  
 
 
 <!-- .content -->

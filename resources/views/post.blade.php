@@ -64,15 +64,27 @@
             </div>
             <div class="bottom-wrapper">
               <div class="row">
-                <div class="col-lg-4 single-b-wrap col-md-12">
-                  <i class="fa fa-heart-o" aria-hidden="true"></i>
-                  lily and 4 people like this
+                <div class="col-lg-3 single-b-wrap col-md-12">
+                 @guest
+                      <i class="fa fa-heart-o" aria-hidden="true"></i>{{$post->likedUsers->count()}} people like this
+                  @else
+                  <a href="#" onclick="document.getElementById('like-form-{{$post->id}}').submit();"> <i class="fa fa-heart" aria-hidden="true" style="color: {{Auth::user()->likedPosts()->where('post_id', $post->id)->count() > 0 ? 'red' : ''}}"></i></a>
+                      {{$post->likedUsers->count()}} people like this
+                  
+                      <form action="{{route('post.like',$post->id)}}" method="POST" style="display: none" id="like-form-{{$post->id}}">
+                      @csrf
+                      </form>
+                  @endguest
                 </div>
-                <div class="col-lg-4 single-b-wrap col-md-12">
+                <div class="col-lg-3 single-b-wrap col-md-12">
+                  <i class="fa fa-eye" aria-hidden="true"></i> {{$post->view_count}}
+                  views
+                </div>
+                <div class="col-lg-3 single-b-wrap col-md-12">
                   <i class="fa fa-comment-o" aria-hidden="true"></i> {{$post->comments->count()}}
                   comments
                 </div>
-                <div class="col-lg-4 single-b-wrap col-md-12">
+                <div class="col-lg-3 single-b-wrap col-md-12">
                   <ul class="social-icons">
                     <li>
                       <a href="#"

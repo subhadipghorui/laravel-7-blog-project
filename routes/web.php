@@ -33,6 +33,7 @@ Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
 Route::post('/comment/{post}', 'CommentController@store')->name('comment.store')->middleware('auth');
 Route::post('/comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store')->middleware('auth');
+Route::post('/like-post/{post}', 'HomeController@likePost')->name('post.like')->middleware('auth');
 
 
 // Admin ////////////////////////////////////////////////////////////////////////
@@ -48,6 +49,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
     Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
     Route::delete('/reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
+    Route::get('/post-liked-users/{post}', 'PostController@likedUsers')->name('post.like.users');
+
 });
 
 // User ////////////////////////////////////////////////////////////////////////
@@ -57,6 +60,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::delete('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
     Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
     Route::delete('/reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
+    Route::get('/user-liked-posts', 'DashboardController@likedPosts')->name('like.posts');
 });
 
 

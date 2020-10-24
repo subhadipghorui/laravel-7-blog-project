@@ -30,4 +30,10 @@ class Post extends Model
     {
         return $query->where('status', 1);
     }
+
+    // many to many
+    public function likedUsers()
+    {
+        return $this->belongsToMany('App\User')->withTimestamps();
+    }
 }

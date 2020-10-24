@@ -27,11 +27,10 @@
                             <a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
                             @elseif(Auth::user()->role->id == 2)
                             <a class="dropdown-item" href="{{ route('user.dashboard') }}"><i class="fa fa-tv" aria-hidden="true"></i>&nbsp; Dashboard</a>
+                            <a class="dropdown-item" href="{{route('user.like.posts')}}"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp; Favorite List</a>
                             @else
                             null
                             @endif
-
-                            <a class="dropdown-item" href="/admin/dashboard"><i class="fa fa-heart" aria-hidden="true"></i>&nbsp; Favorite List</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
