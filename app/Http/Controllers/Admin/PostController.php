@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Mail\NewPost;
 use App\Post;
+use App\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
@@ -80,6 +83,13 @@ class PostController extends Controller
         }
         $post->save();
 
+        // Notification by mail
+        if($post->status){
+            $users = User::all();
+            foreach($users as $user){
+                Mail::to($user->email)->queue(new NewPost($post));
+            }
+        }
         $tags = [];
         $stingTags = array_map('trim', explode(',', $request->tags));
         foreach ($stingTags as $tag) {
@@ -178,6 +188,13 @@ class PostController extends Controller
             $post->status = false;
         }
         $post->save();
+         // Notification by mail
+         if($post->status){
+            $users = User::all();
+            foreach($users as $user){
+                Mail::to($user->email)->queue(new NewPost($post));
+            }
+        }
         // delete old tags
         $post->tags()->delete();
         $tags = [];

@@ -2,8 +2,10 @@
 
 use App\Category;
 use App\Http\Controllers\CommentController;
+use App\Mail\NewPost;
 use App\Post;
 use App\Tag;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
 
@@ -70,4 +72,18 @@ View::composer('layouts.frontend.partials.sidebar', function ($view) {
     $recentTags = Tag::all();
     $recentPosts = Post::latest()->take(3)->get();
     return $view->with('categories', $categories)->with('recentPosts', $recentPosts)->with('recentTags', $recentTags);
+});
+
+
+// Send Mail
+Route::get('/send', function(){
+    $post = Post::findOrFail(7);
+    // Send Mail
+    Mail::to('user@user.com')
+        ->bcc(['user1@user.com','user2@user.com'])
+        ->queue(new NewPost($post));
+
+
+
+    return (new App\Mail\NewPost($post))->render();
 });
