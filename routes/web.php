@@ -83,7 +83,5 @@ Route::get('/send', function(){
         ->bcc(['user1@user.com','user2@user.com'])
         ->queue(new NewPost($post));
 
-
-
     return (new App\Mail\NewPost($post))->render();
 });
