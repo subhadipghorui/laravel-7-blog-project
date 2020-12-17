@@ -64,6 +64,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 // User ////////////////////////////////////////////////////////////////////////
 Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth', 'user']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::get('profile', 'DashboardController@showProfile')->name('profile');
+    Route::put('profile', 'DashboardController@updateProfile')->name('profile.update');
+    Route::put('profile/password', 'DashboardController@changePassword')->name('profile.password');
     Route::get('comments', 'CommentController@index')->name('comment.index');
     Route::delete('/comment/{id}', 'CommentController@destroy')->name('comment.destroy');
     Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
