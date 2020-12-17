@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -70,7 +71,7 @@ class LoginController extends Controller
             $newUser->email = $user->email;
             $newUser->name = $user->name;
             $newUser->userid = $user->id;
-            $newUser->password = uniqid(); // we dont need password for login
+            $newUser->password = uniqid().Str::random(10); // we dont need password for login. For random number we user Str::random()
             $newUser->save();
 
             // Login
