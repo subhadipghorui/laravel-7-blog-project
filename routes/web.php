@@ -26,6 +26,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// Social Login
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
+
+
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/posts', 'HomeController@posts')->name('posts');
 Route::get('/post/{slug}', 'HomeController@post')->name('post');
