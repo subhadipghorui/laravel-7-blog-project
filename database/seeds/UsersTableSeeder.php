@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
             'userid' => 'admin101',
             'role_id' => 1,
             'name' => 'Admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@example.com',
             'password' =>  bcrypt('admin'),
         ]);
         $user = User::create([
             'userid' => 'user101',
             'role_id' => 2,
             'name' => 'User',
-            'email' => 'user@user.com',
+            'email' => 'user@example.com',
             'password' =>  bcrypt('user'),
         ]);
     }

@@ -19,6 +19,11 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('message');
             $table->timestamps();
+
+            // Delete all comments on delete posts
+            $table->foreign('post_id')->references('id')->on('posts')->onDelete('cascade');
+            // Delete all comments on delete users
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

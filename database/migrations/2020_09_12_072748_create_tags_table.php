@@ -15,8 +15,13 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('postID');
+            $table->unsignedBigInteger('postID');
             $table->string('name');
+            
+
+        // Delete all tags on delete posts
+        $table->foreign('postID')->references('id')->on('posts')->onDelete('cascade');
+
         });
     }
 

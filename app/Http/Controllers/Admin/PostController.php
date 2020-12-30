@@ -218,11 +218,12 @@ class PostController extends Controller
     {
         $post = Post::findOrfail($id);
         // delete img if exists
-        if (Storage::disk('public')->exists('post/' . $post->image)) {
+        // delete 1st condition on Production
+        if ($post->image !== 'laravel-wiki-5f92a8e71c7bc1603447015.jpg' && Storage::disk('public')->exists('post/' . $post->image)) {
             Storage::disk('public')->delete('post/' . $post->image);
         }
         // Delete Tags
-        $post->tags()->delete();
+        // $post->tags()->delete();
         $post->delete();
         Toastr::success('Post Successfully Deleted :)', 'success');
 

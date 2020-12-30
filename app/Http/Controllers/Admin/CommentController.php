@@ -19,7 +19,6 @@ class CommentController extends Controller
     {
         $comment = Comment::findOrFail($id);
         // Delete all replies
-        $replies = CommentReply::where('comment_id', $id)->delete();
         $comment->delete();
         Toastr::success('Comment successfully deleted :)');
         return redirect()->back();

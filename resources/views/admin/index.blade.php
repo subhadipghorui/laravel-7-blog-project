@@ -5,7 +5,7 @@
     <div class="col-sm-4">
         <div class="page-header float-left">
             <div class="page-title">
-                <h1>Dashboard</h1>
+                <h1> Admin Dashboard</h1>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="stat-content dib">
                         <div class="stat-text">Posts</div>
-                        <div class="stat-digit">1,012</div>
+                        <div class="stat-digit">{{$posts->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     </div>
                     <div class="stat-content dib">
                         <div class="stat-text">Users</div>
-                        <div class="stat-digit">961</div>
+                        <div class="stat-digit">{{$users->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -88,7 +88,7 @@
                     </div>
                     <div class="stat-content dib">
                         <div class="stat-text">Comments</div>
-                        <div class="stat-digit">770</div>
+                        <div class="stat-digit">{{$comments->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -105,8 +105,8 @@
                         ></i>
                     </div>
                     <div class="stat-content dib">
-                        <div class="stat-text">Likes</div>
-                        <div class="stat-digit">7670</div>
+                        <div class="stat-text">Categories</div>
+                        <div class="stat-digit">{{$categories->count()}}</div>
                     </div>
                 </div>
             </div>
@@ -122,30 +122,20 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Comment</th>
+                            <th scope="col">From</th>
+                            <th scope="col">Post</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($comments->take(10) as $key => $comment)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <th scope="row">{{$key+1}}</th>
+                            <td>{{Str::limit($comment->message, 30)}}</td>
+                            <td>{{$comment->user->name}}</td>
+                            <td><a href="{{route('post', $comment->post->slug)}}">{{Str::limit($comment->post->title, 30)}}</a></td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
