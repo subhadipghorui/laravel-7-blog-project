@@ -169,6 +169,10 @@
                       @endforeach
                     @else
                     @endif
+                      {{-- When user login show reply fourm --}}
+                      @guest
+                      {{-- Show none --}}
+                      @else
                       <div class="comment-list left-padding" id="reply-form-{{$comment->id}}" style="display: none">
                         <div
                           class="single-comment justify-content-between d-flex"
@@ -203,8 +207,8 @@
                           </div>
                         </div>
                       </div>
+                      @endguest
                   </div>
-
                  @endforeach
                 </div>
               </div>
