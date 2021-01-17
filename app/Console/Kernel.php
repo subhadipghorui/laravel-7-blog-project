@@ -24,7 +24,10 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        // php artisan backup:run
+        $schedule->command('inspire')->everyMinute();
+        $schedule->command('backup:clean')->everyTenMinutes();
+        $schedule->command('backup:run')->everyTenMinutes();
     }
 
     /**

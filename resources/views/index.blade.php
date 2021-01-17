@@ -39,8 +39,8 @@
           class="col-lg-6 flex-row d-flex meta-right no-padding justify-content-end"
         >
           <div class="user-meta">
-            <h4 class="text-white">Mark wiens</h4>
-            <p>12 Dec, 2017 11:21 am</p>
+            <h4 class="text-white">Subhadip Ghorui</h4>
+            <p><script>let t = new Date;document.write(t.toDateString());</script></p>
           </div>
           <img class="img-fluid user-img" src="img/user.jpg" alt="" />
         </div>
