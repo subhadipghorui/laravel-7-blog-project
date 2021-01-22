@@ -24,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 // Social Login
 Route::get('login/google', 'Auth\LoginController@redirectToProvider');
@@ -39,13 +39,13 @@ Route::get('/categories', 'HomeController@categories')->name('categories');
 Route::get('/category/{slug}', 'HomeController@categoryPost')->name('category.post');
 Route::get('/search', 'HomeController@search')->name('search');
 Route::get('/tag/{name}', 'HomeController@tagPosts')->name('tag.posts');
-Route::post('/comment/{post}', 'CommentController@store')->name('comment.store')->middleware('auth');
-Route::post('/comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store')->middleware('auth');
-Route::post('/like-post/{post}', 'HomeController@likePost')->name('post.like')->middleware('auth');
+Route::post('/comment/{post}', 'CommentController@store')->name('comment.store')->middleware(['auth', 'verified']);
+Route::post('/comment-reply/{comment}', 'CommentReplyController@store')->name('reply.store')->middleware(['auth', 'verified']);
+Route::post('/like-post/{post}', 'HomeController@likePost')->name('post.like')->middleware(['auth', 'verified']);
 
 
 // Admin ////////////////////////////////////////////////////////////////////////
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function () {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin','verified']], function () {
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('profile', 'DashboardController@showProfile')->name('profile');
     Route::put('profile', 'DashboardController@updateProfile')->name('profile.update');
@@ -62,8 +62,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 });
 
 // User ////////////////////////////////////////////////////////////////////////
-Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth', 'user']], function () {
-    Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth', 'user', 'verified']], function () {
+    Route::get('dashboard', 'DashboardController@likedPosts')->name('dashboard');
     Route::get('profile', 'DashboardController@showProfile')->name('profile');
     Route::put('profile', 'DashboardController@updateProfile')->name('profile.update');
     Route::put('profile/password', 'DashboardController@changePassword')->name('profile.password');
@@ -89,7 +89,6 @@ Route::get('/send', function(){
     $post = Post::findOrFail(7);
     // Send Mail
     Mail::to('user@user.com')
-        ->bcc(['user1@user.com','user2@user.com'])
         ->queue(new NewPost($post));
 
     return (new App\Mail\NewPost($post))->render();

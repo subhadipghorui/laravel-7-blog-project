@@ -70,7 +70,7 @@
 
                     </div>
                     <div class="row d-flex justify-content-center space-between">
-                        <a href="{{url('/login/google')}}" class="btn btn-outline-info m-2">Sing in with Google <i class="fab fa-google-plus" style="color: rgb(185, 57, 11);"></i></a><span class="text-dark font-weight-bold mt-3">
+                        <a href="{{url('/login/google')}}" class="btn btn-outline-info m-2">Sing in with Google <img src="{{asset('frontend/img/google.jpg')}}" alt="google" width="40px"></a><span class="text-dark font-weight-bold mt-3">
 
                     </div>
                     
