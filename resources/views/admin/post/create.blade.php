@@ -100,10 +100,7 @@
     //   uploadUrl: '/apps/ckfinder/3.4.5/core/connector/php/connector.php?command=QuickUpload&type=Files&responseType=json',
 
       // Configure your file manager integration. This example uses CKFinder 3 for PHP.
-      filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
-    filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
-    filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
-    filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token=',
+      filebrowserImageBrowseUrl: '/file-manager/ckeditor',
     
       // The following options are not necessary and are used here for presentation purposes only.
       // They configure the Styles drop-down list and widgets to use classes.

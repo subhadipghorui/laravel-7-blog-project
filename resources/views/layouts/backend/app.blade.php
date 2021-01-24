@@ -10,9 +10,9 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Sufee Admin - HTML5 Admin Template</title>
-        <meta name="description" content="Sufee Admin - HTML5 Admin Template" />
+        <meta name="description" content="myiotlab - dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="apple-touch-icon" href="{{asset('backend/apple-icon.png')}}" />
         <link rel="shortcut icon" href="{{asset('backend/favicon.ico')}}" />
 
@@ -46,6 +46,7 @@
             type="text/css"
         />
         <link rel="stylesheet" href="{{asset('backend/assets/toastr/toastr.min.css')}}">
+        <link rel="stylesheet" href="{{ asset('vendor/file-manager/css/file-manager.css') }}">
         @stack('header')
     </head>
 
@@ -100,6 +101,7 @@
                 });
             })(jQuery);
         </script> --}}
+        <script src="{{ asset('vendor/file-manager/js/file-manager.js') }}"></script>
         <script src="{{asset('backend/assets/toastr/toastr.min.js')}}"></script>
         {!! Toastr::message() !!}
         @stack('footer')

@@ -2,6 +2,7 @@
 <html lang="zxx" class="no-js">
   <head>
     <!-- Mobile Specific Meta -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
@@ -9,15 +10,15 @@
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/fav.png" />
     <!-- Author Meta -->
-    <meta name="author" content="colorlib" />
+    <meta name="author" content="myiotlab" />
     <!-- Meta Description -->
-    <meta name="description" content="" />
+    <meta name="description" content="myiotlab is a personal blogging site about web development, web designed, iot projects and laravel tutorials" />
     <!-- Meta Keyword -->
-    <meta name="keywords" content="" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, PHP, DATABASE, POSTGRES, MYSQL, WEB MAPPING, GIS, RS, REMOTE SENSING, ARDUINO, IOT, MYIOTLAB, BLOG, SUBHADIP GHORUI, WEB DEVELOPMENT, WEB DESIGNED, LARAVEL" />
     <!-- meta character set -->
     <meta charset="UTF-8" />
     <!-- Site Title -->
-    <title>Blogger</title>
+    <title>myiotlab</title>
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
@@ -31,6 +32,17 @@
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
+    <link rel="stylesheet" href="{{asset('frontend/css/wyswyg-post.css')}}" />
+    {{-- online --}}
+    <link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+
+{{-- Local --}}
+    <link rel="stylesheet"
+      href="{{asset('frontend/high-lightjs/default.min.css')}}">
+    <script src="{{asset('frontend/high-lightjs/highlight.min.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('frontend/codesnippet/lib/highlight/styles/github.css') }}">
     <style>
     @media only screen and (min-width: 790px) {
         .menu1{
@@ -84,7 +96,7 @@
                 <form
                   target="_blank"
                   novalidate="true"
-                  action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                  action="#"
                   method="get"
                   class="form-inline"
                 >
@@ -100,7 +112,7 @@
                       />
                       <div style="position: absolute; left: -5000px">
                         <input
-                          name="b_36c4fd991d266f23781ded980_aefe40901a"
+                          name="email"
                           tabindex="-1"
                           value=""
                           type="text"
@@ -172,6 +184,8 @@
     <script src="{{asset('frontend/js/jquery.magnific-popup.min.js')}}"></script>
     <script src="{{asset('frontend/js/jquery.sticky.js')}}"></script>
     <script src="{{asset('frontend/js/main.js')}}"></script>
+    <script src="{{ asset('frontend/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
     @stack('footer')
   </body>
 </html>

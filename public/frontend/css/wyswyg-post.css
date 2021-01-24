@@ -1,0 +1,12 @@
+.image-align-center{
+    display: flex;
+    justify-content: center;
+  }
+  .image-align-left{
+    display: flex;
+    justify-content: flex-start;
+  }
+  .image-align-right{
+    display: flex;
+    justify-content: flex-end;
+  }

@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2.5",
+        "alexusmai/laravel-file-manager": "^2.5",
         "brian2694/laravel-toastr": "^5.54",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
