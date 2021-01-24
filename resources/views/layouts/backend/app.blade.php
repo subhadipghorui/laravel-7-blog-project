@@ -45,7 +45,7 @@
             rel="stylesheet"
             type="text/css"
         />
-
+        <link rel="stylesheet" href="{{asset('backend/assets/toastr/toastr.min.css')}}">
         @stack('header')
     </head>
 
@@ -76,13 +76,13 @@
         <script src="{{asset('backend/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
         <script src="{{asset('backend/assets/js/main.js')}}"></script>
 
-        <script src="{{asset('backend/vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
+        {{-- <script src="{{asset('backend/vendors/chart.js/dist/Chart.bundle.min.js')}}"></script>
         <script src="{{asset('backend/assets/js/dashboard.js')}}"></script>
         <script src="{{asset('backend/assets/js/widgets.js')}}"></script>
         <script src="{{asset('backend/vendors/jqvmap/dist/jquery.vmap.min.js')}}"></script>
         <script src="{{asset('backend/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
-        <script src="{{asset('backend/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
-        <script>
+        <script src="{{asset('backend/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script> --}}
+        {{-- <script>
             (function ($) {
                 "use strict";
 
@@ -99,7 +99,9 @@
                     normalizeFunction: "polynomial",
                 });
             })(jQuery);
-        </script>
+        </script> --}}
+        <script src="{{asset('backend/assets/toastr/toastr.min.js')}}"></script>
+        {!! Toastr::message() !!}
         @stack('footer')
     </body>
 </html>

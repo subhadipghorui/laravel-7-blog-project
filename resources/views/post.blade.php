@@ -50,7 +50,7 @@
                   </div>
                 </div>
               </div>
-              <h4 class="text-muted">{{$post->category->name}}</h4>
+              <h4 class="text-muted mt-3">{{$post->category->name}}</h4>
             </div>
             <div class="tags">
               <ul>
@@ -59,7 +59,7 @@
                 @endforeach
               </ul>
             </div>
-            <div class="single-post-content">
+            <div class="single-post-content" style="all: initial;font-family: sans-serif;line-height: 1.8;">
              {!! $post->body !!}
             </div>
             <div class="bottom-wrapper">

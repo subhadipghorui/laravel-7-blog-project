@@ -56,7 +56,7 @@ class HomeController extends Controller
     {
         $this->validate($request, ['search' => 'required|max:255']);
         $search = $request->search;
-        $posts = Post::where('title', 'like', "%$search%")->paginate(10);
+        $posts = Post::where('title', 'like', "%$search%")->published()->paginate(10);
         $posts->appends(['search' => $search]);
 
         // $categories = Category::all();
@@ -65,7 +65,7 @@ class HomeController extends Controller
     public function tagPosts($name)
     {
         $query = $name;
-        $tags = Tag::where('name', 'like', "%$name%")->paginate(10);
+        $tags = Tag::where('name', 'like', "%$name%")->published()->paginate(10);
         $tags->appends(['search' => $name]);
 
         return view('tagPosts', compact('tags', 'query'));

@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
-
+use Illuminate\Support\Str;
 class NewPostNotify extends Notification implements ShouldQueue
 {
     use Queueable;
@@ -43,9 +43,8 @@ class NewPostNotify extends Notification implements ShouldQueue
     {
         return (new MailMessage())
         ->subject('New Post Availabel')
-        ->greeting('Hello Subscriber !')
-        ->line('There is a new Post. Hope you will Like it :)')
-        ->line('Post Title : '.$this->post->title)
+        ->greeting('Title : '.$this->post->title)
+        ->line('Category : '.$this->post->category->name)
         ->line('Author : '.$this->post->user->name)
         ->action('View Post', url(route('post', $this->post->slug)))
         ->line('Thank you.');

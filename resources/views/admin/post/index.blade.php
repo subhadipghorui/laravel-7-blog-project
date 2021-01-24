@@ -2,7 +2,6 @@
 @push('header')
 <link rel="stylesheet" href="{{asset('backend/vendors/datatables.net-bs4/css/dataTables.bootstrap4.min.css')}}" />
 <link rel="stylesheet" href="{{asset('backend/vendors/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css')}}" />
-<link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 @endpush
 @section('content')
     <div id="right-panel" class="right-panel">
@@ -58,7 +57,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
-                                            <th>Slug</th>
+                                            <th>Category</th>
                                             <th>Views & Likes</th>
                                             <th>Created_At</th>
                                             <th>Action</th>
@@ -68,8 +67,8 @@
                                         @foreach ($posts as $key => $post)
                                         <tr>
                                             <td>{{$key+1}}</td>
-                                            <td>{{$post->title}}</td>
-                                            <td>{{$post->slug}}</td>
+                                            <td><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></td>
+                                            <td>{{$post->category->name}}</td>
                                         <td><a href="{{route('admin.post.like.users', $post->id)}}" class="btn btn-danger" type="button"> <i class="fa fa-heart"></i> {{$post->likedUsers->count()}}</a> <button class="btn btn-info" type="button"><i class="fa fa-eye"></i> {{$post->view_count}}</button></td>
                                             <td>{{$post->created_at}}</td>
                                             <td>
@@ -165,7 +164,5 @@
 
         });
     </script>
-    <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        {!! Toastr::message() !!}
+
 @endpush
