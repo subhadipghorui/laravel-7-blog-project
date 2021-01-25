@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('optimize:clear')->daily();
         $schedule->command('config:cache')->daily();
+        $schedule->command('cache:clear')->daily();
         
         
         
