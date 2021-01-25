@@ -28,8 +28,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('config:cache')->daily();
         $schedule->command('cache:clear')->daily();
         
-        
-        
         $schedule->command('view:clear')->hourly();
         $schedule->command('view:cache')->hourly();
         $schedule->command('auth:clear-resets')->weekly();
