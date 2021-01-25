@@ -24,10 +24,21 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // php artisan backup:run
-        $schedule->command('inspire')->everyMinute();
-        $schedule->command('backup:clean')->everyTenMinutes();
-        $schedule->command('backup:run')->everyTenMinutes();
+        $schedule->command('optimize:clear')->daily();
+        $schedule->command('config:cache')->daily();
+        
+        
+        
+        $schedule->command('view:clear')->hourly();
+        $schedule->command('view:cache')->hourly();
+        $schedule->command('auth:clear-resets')->weekly();
+        
+        $schedule->command('queue:work')->withoutOverlapping()->runInBackground();
+        $schedule->command('queue:flush')->weekdays();
+
+
+        $schedule->command('backup:clean')->dailyAt('01:00')->timezone('Asia/Kolkata');
+        $schedule->command('backup:run')->dailyAt('01:00')->timezone('Asia/Kolkata');
     }
 
     /**
