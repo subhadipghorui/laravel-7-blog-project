@@ -34,9 +34,9 @@
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}" />
     <link rel="stylesheet" href="{{asset('frontend/css/wyswyg-post.css')}}" />
     {{-- online --}}
-    <link rel="stylesheet"
+    {{-- <link rel="stylesheet"
       href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/default.min.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script> --}}
 
 {{-- Local --}}
     <link rel="stylesheet"
@@ -45,10 +45,10 @@
     <link rel="stylesheet" href="{{ asset('frontend/codesnippet/lib/highlight/styles/github.css') }}">
     <style>
     @media only screen and (min-width: 790px) {
-        .menu1{
-            /* border: 1px solid #333; */
-            margin-left: -5rem;
-            }
+      .menu1{
+          /* border: 1px solid #333; */
+          margin-left: -5rem;
+          }
         }
       .c1{
         color: #007bff;

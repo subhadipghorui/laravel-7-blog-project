@@ -85,11 +85,11 @@ View::composer('layouts.frontend.partials.sidebar', function ($view) {
 
 
 // Send Mail
-Route::get('/send', function(){
-    $post = Post::findOrFail(7);
-    // Send Mail
-    Mail::to('user@user.com')
-        ->queue(new NewPost($post));
+// Route::get('/send', function(){
+//     $post = Post::findOrFail(7);
+//     // Send Mail
+//     Mail::to('user@user.com')
+//         ->queue(new NewPost($post));
 
-    return (new App\Mail\NewPost($post))->render();
-});
+//     return (new App\Mail\NewPost($post))->render();
+// });

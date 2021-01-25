@@ -44,7 +44,7 @@
                        </h4></a
                      >
                      <p>
-                       {!! Str::limit($post->body, 400) !!}
+                       {{-- {!! Str::limit($post->body, 400) !!} --}}
                      </p>
                      <p class="footer pt-20">
                        <i class="fa fa-heart-o" aria-hidden="true"></i>

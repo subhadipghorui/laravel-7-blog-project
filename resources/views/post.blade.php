@@ -34,13 +34,12 @@
           <div class="single-page-post">
             <img class="img-fluid" src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->image}}" />
             <div class="top-wrapper">
-              <div class="row d-flex justify-content-between">
-                <h2 class="col-lg-8 col-md-12 text-uppercase">
-               {{$post->title}}
-                </h2>
-                <div
-                  class="col-lg-4 col-md-12 right-side d-flex justify-content-end"
-                >
+              <h2 class="col-lg-12 col-md-12 text-uppercase">
+             {{$post->title}}
+              </h2>
+              <div class="row d-flex justify-content-between pl-4">
+                <h4 class="col-lg-8 col-md-12 text-muted mt-3">{{$post->category->name}}</h4>
+                <div class="col-lg-4 col-md-12 right-side d-flex justify-content-end">
                   <div class="desc">
                     <h2>{{$post->user->name}}</h2>
                     <h3>{{$post->created_at->diffForHumans()}}</h3>
@@ -50,7 +49,6 @@
                   </div>
                 </div>
               </div>
-              <h4 class="text-muted mt-3">{{$post->category->name}}</h4>
             </div>
             <div class="tags">
               <ul>
