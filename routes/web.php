@@ -3,8 +3,10 @@
 use App\Category;
 use App\Http\Controllers\CommentController;
 use App\Mail\NewPost;
+use App\Notifications\NewPostNotify;
 use App\Post;
 use App\Tag;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Route;
@@ -58,6 +60,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('/reply-comments', 'CommentReplyController@index')->name('reply-comment.index');
     Route::delete('/reply-comment/{id}', 'CommentReplyController@destroy')->name('reply-comment.destroy');
     Route::get('/post-liked-users/{post}', 'PostController@likedUsers')->name('post.like.users');
+    
+    //Send Mail
+    // Send Mail
+    Route::get('/send', function(){
+        $post = Post::findOrFail(1);
+        // Send Mail
+        Mail::to('subbhadipghorui105@gmail.com')
+            ->queue(new NewPost($post));
+
+        Notification::route('mail', 'subbhadipghorui105@gmail.com')
+                ->notify(new NewPostNotify($post)); 
+                
+        return (new App\Mail\NewPost($post))->render();
+    });
 
 });
 
@@ -82,14 +98,3 @@ View::composer('layouts.frontend.partials.sidebar', function ($view) {
     $recentPosts = Post::latest()->published()->take(3)->get();
     return $view->with('categories', $categories)->with('recentPosts', $recentPosts)->with('recentTags', $recentTags);
 });
-
-
-// Send Mail
-// Route::get('/send', function(){
-//     $post = Post::findOrFail(7);
-//     // Send Mail
-//     Mail::to('user@user.com')
-//         ->queue(new NewPost($post));
-
-//     return (new App\Mail\NewPost($post))->render();
-// });

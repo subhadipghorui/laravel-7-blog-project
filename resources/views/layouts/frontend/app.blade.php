@@ -9,16 +9,14 @@
     />
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/fav.png" />
-    <!-- Author Meta -->
-    <meta name="author" content="myiotlab" />
-    <!-- Meta Description -->
-    <meta name="description" content="myiotlab is a personal blogging site about web development, web designed, iot projects and laravel tutorials" />
-    <!-- Meta Keyword -->
-    <meta name="keywords" content="HTML, CSS, JavaScript, PHP, DATABASE, POSTGRES, MYSQL, WEB MAPPING, GIS, RS, REMOTE SENSING, ARDUINO, IOT, MYIOTLAB, BLOG, SUBHADIP GHORUI, WEB DEVELOPMENT, WEB DESIGNED, LARAVEL" />
     <!-- meta character set -->
     <meta charset="UTF-8" />
+    
+
+    {{-- SEO Follow this page --}}
+    <meta name="robots" content="index, follow"> 
     <!-- Site Title -->
-    <title>myiotlab</title>
+    <title>@yield('title')</title>
 
     <link
       href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700"
@@ -43,6 +41,7 @@
       href="{{asset('frontend/high-lightjs/default.min.css')}}">
     <script src="{{asset('frontend/high-lightjs/highlight.min.js')}}"></script>
     <link rel="stylesheet" href="{{ asset('frontend/codesnippet/lib/highlight/styles/monokai_sublime.css') }}">
+    
     <style>
     @media only screen and (min-width: 790px) {
       .menu1{

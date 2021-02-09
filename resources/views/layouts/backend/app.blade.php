@@ -9,10 +9,13 @@
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <title>Sufee Admin - HTML5 Admin Template</title>
+        <title>Dashboard | myiotlab</title>
         <meta name="description" content="myiotlab - dashboard" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        {{-- Do not follow this page --}}
+        <meta name="robots" content="noindex, nofollow">
         <link rel="apple-touch-icon" href="{{asset('backend/apple-icon.png')}}" />
         <link rel="shortcut icon" href="{{asset('backend/favicon.ico')}}" />
 

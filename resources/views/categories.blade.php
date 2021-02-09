@@ -1,4 +1,45 @@
 @extends('layouts.frontend.app')
+@section('title')
+    Post Categories | myiotlab
+@endsection
+
+@push('header')
+<!-- Author Meta -->
+<meta name="author" content="myiotlab" />
+<!-- Meta Description -->
+<meta name="description" content="A Blog site about web development, web designed, iot projects and laravel tutorials." />
+<meta name="image" content="{{asset('/frontend/ing/sitelogo.png')}}" />
+<!-- Meta Keyword -->
+<meta name="keywords" content="HTML, CSS, JavaScript, PHP, DATABASE, POSTGRES, MYSQL, WEB MAPPING, GIS, RS, REMOTE SENSING, ARDUINO, IOT, MYIOTLAB, BLOG, SUBHADIP GHORUI, WEB DEVELOPMENT, WEB DESIGNED, LARAVEL" />
+
+<meta property="og:type" content="website" />
+
+<meta property="og:title" content="myiotlab" />
+
+<meta property="og:description" content="A Blog site about web development, web designed, iot projects and laravel tutorials." />
+
+<meta property="og:url" content="{{asset('/')}}" />
+
+<meta property="og:site_name" content="myiotlab" />
+
+{{-- tell seo this is main page --}}
+<link rel="canonical" href="{{ config('app.url', 'http://myiotlab.in/') }}}" />
+
+
+{{-- Tweeter --}}
+<meta name="twitter:title" content="myiotlab">
+
+<meta name="twitter:description" content="A Bloge site about web development, web designed, iot projects and laravel tutorials.">
+
+<meta name="twitter:image" content="{{asset('/frontend/ing/sitelogo.png')}}">
+
+<meta name="twitter:site" content="@myiotlab">
+
+<meta name="twitter:creator" content="@subhadipghorui">
+
+<link rel="alternate" type="application/rss+xml" href="{{asset('/frontend/ing/sitelogo.png')}}" title="myiotlab" >
+
+@endpush
 @section('content')
 <!-- Start banner Area -->
 <section class="generic-banner relative">

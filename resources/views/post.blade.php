@@ -1,6 +1,46 @@
 @extends('layouts.frontend.app')
+@section('title')
+    {{$post->title}} | myiotlab
+@endsection
 
 @push('header')
+<!-- Author Meta -->
+<meta name="author" content="{{$post->user->name}}" />
+<!-- Meta Description -->
+<meta name="description" content="{{$post->title}}" />
+<meta name="image" content="{{asset('storage/post/'.$post->image)}}" />
+<!-- Meta Keyword -->
+<meta name="keywords" content="@foreach ($post->tags as $tag) {{$tag->name}},@endforeach" />
+
+<meta property="og:type" content="article" />
+
+<meta property="og:title" content="{{$post->title}}" />
+
+<meta property="og:description" content="{{$post->title}}" />
+
+<meta property="og:image" content="{{asset('storage/post/'.$post->image)}}" />
+
+<meta property="og:url" content="{{asset('/post/'.$post->slug)}}" />
+
+<meta property="og:site_name" content="myiotlab" />
+
+{{-- tell seo this is main page --}}
+<link rel="canonical" href="{{asset('/posts/'.$post->slug)}}" />
+
+
+{{-- Tweeter --}}
+<meta name="twitter:title" content="{{$post->title}}">
+
+<meta name="twitter:description" content="{{$post->title}}">
+
+<meta name="twitter:image" content="{{asset('storage/post/'.$post->image)}}">
+
+<meta name="twitter:site" content="@myiotlab">
+
+<meta name="twitter:creator" content="@{{$post->user->name}}">
+
+<link rel="alternate" type="application/rss+xml" href="{{asset('/post/'.$post->slug)}}" title="{{$post->title}} - myiotlab">
+
 <style>
     .single-post-content img {
     width: 100%;
@@ -47,7 +87,7 @@
              {{$post->title}}
               </h1>
               <div class="row d-flex justify-content-between pl-3 mt-2">
-                <h4 class="col-lg-8 col-md-12 text-muted mt-3">{{$post->category->name}}</h4>
+                <h4 class="col-lg-8 col-md-12 text-muted mt-3"><a href="{{route('category.post', $post->category->slug)}}">{{$post->category->name}}</a></h4>
                 <div class="col-lg-4 col-md-12 right-side d-flex justify-content-end">
                   <div class="desc">
                     <h2>{{$post->user->name}}</h2>
@@ -84,12 +124,10 @@
                   @endguest
                 </div>
                 <div class="col-lg-4 single-b-wrap col-md-12">
-                  <i class="fa fa-eye" aria-hidden="true"></i> {{$post->view_count}}
-                  views
+                  <i class="fa fa-eye" aria-hidden="true"></i> {{$post->view_count}} views
                 </div>
                 <div class="col-lg-4 single-b-wrap col-md-12">
-                  <i class="fa fa-comment-o" aria-hidden="true"></i> {{$post->comments->count()}}
-                  comments
+                  <i class="fa fa-comment-o" aria-hidden="true"></i> {{$post->comments->count()}} comments
                 </div>
                 <div class="row mx-1">
                   <div class="col-lg-6 single-b-wrap col-md-12 pt-4">
