@@ -42,7 +42,7 @@
             <h4 class="text-white">Subhadip Ghorui</h4>
             <p><script>let t = new Date;document.write(t.toDateString());</script></p>
           </div>
-          <img class="img-fluid user-img" src="img/user.jpg" alt="" />
+          <!--<img class="img-fluid user-img" src="{{asset('frontend/img/admin.png')}}" alt="admin" style="width: 50px; border-radius: 50%;"/>-->
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
         @foreach ($posts as $post)
       <div class="item single-cat">
         <img src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->image}}" />
-        <p class="date">{{$post->created_at->diffForHumans()}}</p>
+         <div class="date mt-20 mb-20">{{$post->created_at->diffForHumans()}}</div>
         <h4><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h4>
       </div>
       @endforeach

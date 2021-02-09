@@ -9,14 +9,14 @@
         <h1 class="text-white mb-20">All Post of Category 1</h1>
         <ul>
           <li>
-            <a href="index.html">Home</a
+            <a href="/">Home</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
           <li>
-            <a href="category.html">Category</a
+            <a href="#">Category</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
-          <li><a href="single.html">Posts</a></li>
+          <li><a href="#">Posts</a></li>
         </ul>
       </div>
     </div>
@@ -46,7 +46,7 @@
                             </h4></a
                           >
                           <p>
-                            {!!Str::limit($post->body, 300)!!}
+                            
                           </p>
                           <p class="footer pt-20">
                             <i class="fa fa-heart-o" aria-hidden="true"></i>

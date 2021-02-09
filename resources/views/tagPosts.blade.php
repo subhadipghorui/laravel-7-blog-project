@@ -9,14 +9,14 @@
         <h1 class="text-white mb-20">All Post of #{{$query}}</h1>
         <ul>
           <li>
-            <a href="index.html">Home</a
+            <a href="/">Home</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
           <li>
-            <a href="category.html">Tag</a
+            <a href="#">Tag</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
-          <li><a href="single.html">Posts</a></li>
+      <li><a href="#">Posts</a></li>
         </ul>
       </div>
     </div>

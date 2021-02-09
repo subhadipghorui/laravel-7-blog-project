@@ -77,7 +77,7 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
 
 // View Composer
 View::composer('layouts.frontend.partials.sidebar', function ($view) {
-    $categories = Category::all()->take(10);
+    $categories = Category::all();
     $recentTags = Tag::all();
     $recentPosts = Post::latest()->published()->take(3)->get();
     return $view->with('categories', $categories)->with('recentPosts', $recentPosts)->with('recentTags', $recentTags);

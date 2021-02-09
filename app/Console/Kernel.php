@@ -30,14 +30,16 @@ class Kernel extends ConsoleKernel
         
         $schedule->command('view:clear')->hourly();
         $schedule->command('view:cache')->hourly();
-        $schedule->command('auth:clear-resets')->weekly();
+        $schedule->command('auth:clear-resets')->weekly()->mondays()->timezone('Asia/Kolkata')->between('00:00', '1:00');
         
-        $schedule->command('queue:work')->withoutOverlapping()->runInBackground();
-        $schedule->command('queue:flush')->weekdays();
+        // $schedule->command('queue:work')->withoutOverlapping()->runInBackground();
+        $schedule->command('queue:flush')->weekly()->mondays()->timezone('Asia/Kolkata')->between('00:00', '1:00');
 
 
-        $schedule->command('backup:clean')->dailyAt('01:00')->timezone('Asia/Kolkata');
-        $schedule->command('backup:run')->dailyAt('01:00')->timezone('Asia/Kolkata');
+        // $schedule->command('backup:clean')->dailyAt('01:00')->timezone('Asia/Kolkata');
+        // $schedule->command('backup:run')->dailyAt('01:00')->timezone('Asia/Kolkata');
+        $schedule->command('backup:clean')->daily()->timezone('Asia/Kolkata')->between('00:00', '1:00');;
+        $schedule->command('backup:run')->daily()->timezone('Asia/Kolkata')->between('00:00', '1:00');
     }
 
     /**

@@ -43,9 +43,9 @@
         <p>
         {{$recentPost->created_at->diffForHumans()}}
           <span>
-            <i class="fa fa-heart-o" aria-hidden="true"></i> 06
+            <i class="fa fa-heart-o" aria-hidden="true"></i> {{$recentPost->likedUsers->count()}}
             <i class="fa fa-comment-o" aria-hidden="true"></i
-            >02</span
+            >{{$recentPost->comments->count()}}</span
           >
         </p>
       </div>
@@ -56,7 +56,7 @@
       <h4 class="text-uppercase pb-20">Tag Clouds</h4>
       <ul>
        @foreach ($recentTags->unique('name')->take(10) as $recentTag)
-       <li><a href="{{route('tag.posts', $recentTag->name)}}">{{$recentTag->name}}</a></li>
+       <li><a href="{{route('tag.posts', $recentTag->name)}}">#{{$recentTag->name}}</a></li>
        @endforeach
       </ul>
     </div>

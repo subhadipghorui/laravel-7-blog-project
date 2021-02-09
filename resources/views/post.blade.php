@@ -1,5 +1,14 @@
 @extends('layouts.frontend.app')
 
+@push('header')
+<style>
+    .single-post-content img {
+    width: 100%;
+    height: auto;
+}
+</style>
+@endpush
+
 @section('content')
 <!-- Start top-section Area -->
 <section class="top-section-area section-gap">
@@ -9,14 +18,14 @@
         <h1 class="text-white mb-20">Post Details</h1>
         <ul>
           <li>
-            <a href="index.html">Home</a
+            <a href="/">Home</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
           <li>
-            <a href="category.html">Category</a
+            <a href="/categories">Category</a
             ><span class="lnr lnr-arrow-right"></span>
           </li>
-          <li><a href="single.html">Fashion</a></li>
+          <li><a href="/categories/{{$post->slug}}">{{$post->title}}</a></li>
         </ul>
       </div>
     </div>
@@ -34,10 +43,10 @@
           <div class="single-page-post">
             <img class="img-fluid" src="{{asset('storage/post/'.$post->image)}}" alt="{{$post->image}}" />
             <div class="top-wrapper">
-              <h2 class="col-lg-12 col-md-12 text-uppercase">
+              <h1 class="col-lg-12 col-md-12">
              {{$post->title}}
-              </h2>
-              <div class="row d-flex justify-content-between pl-4">
+              </h1>
+              <div class="row d-flex justify-content-between pl-3 mt-2">
                 <h4 class="col-lg-8 col-md-12 text-muted mt-3">{{$post->category->name}}</h4>
                 <div class="col-lg-4 col-md-12 right-side d-flex justify-content-end">
                   <div class="desc">
@@ -53,7 +62,7 @@
             <div class="tags">
               <ul>
                 @foreach ($post->tags as $tag)
-                <li><a href="#">{{$tag->name}}</a></li>
+                <li><a href="{{route('tag.posts', $tag->name)}}">#{{$tag->name}}</a></li>
                 @endforeach
               </ul>
             </div>

@@ -87,7 +87,7 @@
 <script>
      CKEDITOR.addCss(
       'body.document-editor { margin: 0.5cm auto; border: 1px #D3D3D3 solid; border-radius: 5px; background: white; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }' +
-      'body.document-editor, div.cke_editable { width: 700px; padding: 1cm 2cm 2cm; } ' +
+      'body.document-editor, div.cke_editable { width: 900px; padding: 1cm 2cm 2cm; } ' +
       'body.document-editor table td > p, div.cke_editable table td > p { margin-top: 0; margin-bottom: 0; padding: 4px 0 3px 5px;} ' +
       'blockquote { font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"; } ');
 

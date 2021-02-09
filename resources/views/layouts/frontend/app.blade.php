@@ -42,7 +42,7 @@
     <link rel="stylesheet"
       href="{{asset('frontend/high-lightjs/default.min.css')}}">
     <script src="{{asset('frontend/high-lightjs/highlight.min.js')}}"></script>
-    <link rel="stylesheet" href="{{ asset('frontend/codesnippet/lib/highlight/styles/github.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/codesnippet/lib/highlight/styles/monokai_sublime.css') }}">
     <style>
     @media only screen and (min-width: 790px) {
       .menu1{
@@ -65,6 +65,8 @@
             }
             }
     </script>
+    
+    @stack('header')
   </head>
   <body>
     <!-- Start Header Area -->
