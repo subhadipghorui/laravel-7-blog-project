@@ -42,7 +42,7 @@ class NewPostNotify extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage())
-        ->subject('New Post Availabel')
+        ->subject('New Post Available !!')
         ->greeting('Title : '.$this->post->title)
         ->line('Category : '.$this->post->category->name)
         ->line('Author : '.$this->post->user->name)

@@ -73,7 +73,7 @@ class LoginController extends Controller
             $newUser->name = $user->name;
             $newUser->email_verified_at = Date::now();
             $newUser->userid = $user->id;
-            $newUser->password = uniqid().Str::random(10); // we dont need password for login. For random number we user Str::random()
+            $newUser->password = bcrypt(uniqid()); // we dont need password for login. For random number we user Str::random()
             $newUser->save();
 
             // Login

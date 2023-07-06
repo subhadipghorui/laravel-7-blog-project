@@ -1,26 +1,26 @@
 @extends('layouts.frontend.app')
 @section('title')
-    myiotlab
+    Myiotlab | Web Development Tutorials, WebGIS and Iot Projects
 @endsection
 
 @push('header')
 <!-- Author Meta -->
 <meta name="author" content="myiotlab" />
 <!-- Meta Description -->
-<meta name="description" content="A Blog site about web development, web designed, iot projects and laravel tutorials." />
+<meta name="description" content="This site is all about web development, web designed, iot projects, webgis and laravel tutorials." />
 <meta name="image" content="{{asset('/frontend/ing/sitelogo.png')}}" />
 <!-- Meta Keyword -->
-<meta name="keywords" content="HTML, CSS, JavaScript, PHP, DATABASE, POSTGRES, MYSQL, WEB MAPPING, GIS, RS, REMOTE SENSING, ARDUINO, IOT, MYIOTLAB, BLOG, SUBHADIP GHORUI, WEB DEVELOPMENT, WEB DESIGNED, LARAVEL" />
+<meta name="keywords" content="HTML, CSS, JavaScript, PHP, DATABASE, POSTGRES, MYSQL, WEB MAPPING, GIS, RS, REMOTE SENSING, ARDUINO, IOT, MYIOTLAB, BLOG, SUBHADIP GHORUI, WEB DEVELOPMENT, WEB DESIGNED, LARAVEL, programming courses, programming tutorials,web development courses, web development tutorials,javascript courses, html courses, web design courses,web design tutorials, learn web development, free programming course" />
 
 <meta property="og:type" content="website" />
 
-<meta property="og:title" content="myiotlab" />
+<meta property="og:title" content="Myiotlab" />
 
-<meta property="og:description" content="A Blog site about web development, web designed, iot projects and laravel tutorials." />
+<meta property="og:description" content="This site is all about web development, web designed, iot projects, webgis and laravel tutorials." />
 
 <meta property="og:url" content="{{asset('/')}}" />
 
-<meta property="og:site_name" content="myiotlab" />
+<meta property="og:site_name" content="Myiotlab" />
 
 {{-- tell seo this is main page --}}
 <link rel="canonical" href="{{ config('app.url', 'http://myiotlab.in/') }}}" />
@@ -29,7 +29,7 @@
 {{-- Tweeter --}}
 <meta name="twitter:title" content="myiotlab">
 
-<meta name="twitter:description" content="A Bloge site about web development, web designed, iot projects and laravel tutorials.">
+<meta name="twitter:description" content="This site is all about web development, web designed, iot projects and laravel tutorials.">
 
 <meta name="twitter:image" content="{{asset('/frontend/ing/sitelogo.png')}}">
 
@@ -71,7 +71,7 @@
         class="head-bottom-meta d-flex justify-content-between align-items-end col-lg-12"
       >
         <div class="col-lg-6 flex-row d-flex meta-left no-padding">
-          <a href="/login" class="genric-btn info circle arrow mr-md-auto"
+          <a href="https://www.youtube.com/channel/UC-cY0xIcJoVgzMIrlf5d6Ag" class="genric-btn info circle arrow mr-md-auto"
             >Visit Yotube <span class="lnr lnr-arrow-right"></span
           ></a>
         </div>

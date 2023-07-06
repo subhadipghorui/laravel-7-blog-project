@@ -16,9 +16,7 @@
 
         {{-- Do not follow this page --}}
         <meta name="robots" content="noindex, nofollow">
-        <link rel="apple-touch-icon" href="{{asset('backend/apple-icon.png')}}" />
-        <link rel="shortcut icon" href="{{asset('backend/favicon.ico')}}" />
-
+        
         <link
             rel="stylesheet"
             href="{{asset('backend/vendors/bootstrap/dist/css/bootstrap.min.css')}}"

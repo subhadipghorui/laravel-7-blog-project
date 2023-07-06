@@ -45,6 +45,7 @@
                                             <th>Role</th>
                                             <th>User Id</th>
                                             <th>Email</th>
+                                            <th>Verified_At</th>
                                             <th>Created_At</th>
                                             <th>Updated_At</th>
                                             <th>Action</th>
@@ -58,6 +59,7 @@
                                             <td>{{$user->role->name}}</td>
                                             <td>{{$user->userid}}</td>
                                             <td>{{$user->email}}</td>
+                                            <td>{{$user->email_verified_at}}</td>
                                             <td>{{$user->created_at}}</td>
                                             <td>{{$user->updated_at}}</td>
                                             <td>

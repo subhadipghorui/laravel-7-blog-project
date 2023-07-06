@@ -37,7 +37,7 @@
 
 <meta name="twitter:site" content="@myiotlab">
 
-<meta name="twitter:creator" content="@{{$post->user->name}}">
+<meta name="twitter:creator" content="@subhadipghorui">
 
 <link rel="alternate" type="application/rss+xml" href="{{asset('/post/'.$post->slug)}}" title="{{$post->title}} - myiotlab">
 
@@ -171,9 +171,37 @@
                 </div>
               </div>
             </div>
-
+            <!-- Start commentform Area -->
+            <section class="commentform-area">
+              @guest
+                  <div class="container">
+                      <h4>Please Sign in to post comments - <a href="{{route('login')}}">Sing in</a> or <a href="{{route('register')}}">Register</a></h4>
+                  </div>
+              @else
+                  <div class="container">
+                    <h5 class="text-uppercas pb-50">Leave a Reply</h5>
+                    <div class="row flex-row d-flex">
+                        <div class="col-lg-12">
+                            <form action="{{route('comment.store', $post->id)}}" method="POST">
+                                @csrf
+                            <textarea
+                              class="form-control mb-10"
+                              name="message"
+                              placeholder="Messege"
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Messege'"
+                              required=""
+                            ></textarea>
+                            <button type="submit" class="primary-btn mt-20" href="#">Comment</button>
+                        </form>
+                        </div>
+                    </div>
+                  </div>
+                  @endguest
+              </section>
+              <!-- End commentform Area -->
             <!-- Start comment-sec Area -->
-            <section class="comment-sec-area pt-80 pb-80">
+            <section class="comment-sec-area">
               <div class="container">
                 <div class="row flex-column">
                   <h5 class="text-uppercase pb-80">{{$post->comments->count()}} Comments</h5>
@@ -276,35 +304,7 @@
             </section>
             <!-- End comment-sec Area -->
 
-            <!-- Start commentform Area -->
-            <section class="commentform-area pb-120 pt-80 mb-100">
-            @guest
-                <div class="container">
-                    <h4>Please Sign in to post comments - <a href="{{route('login')}}">Sing in</a> or <a href="{{route('register')}}">Register</a></h4>
-                </div>
-            @else
-                <div class="container">
-                  <h5 class="text-uppercas pb-50">Leave a Reply</h5>
-                  <div class="row flex-row d-flex">
-                      <div class="col-lg-12">
-                          <form action="{{route('comment.store', $post->id)}}" method="POST">
-                              @csrf
-                          <textarea
-                            class="form-control mb-10"
-                            name="message"
-                            placeholder="Messege"
-                            onfocus="this.placeholder = ''"
-                            onblur="this.placeholder = 'Messege'"
-                            required=""
-                          ></textarea>
-                          <button type="submit" class="primary-btn mt-20" href="#">Comment</button>
-                      </form>
-                      </div>
-                  </div>
-                </div>
-                @endguest
-            </section>
-            <!-- End commentform Area -->
+      
           </div>
         </div>
         @include('layouts.frontend.partials.sidebar')

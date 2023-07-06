@@ -58,6 +58,7 @@
                                             <th>#</th>
                                             <th>Title</th>
                                             <th>Category</th>
+                                            <th>Status</th>
                                             <th>Views & Likes</th>
                                             <th>Created_At</th>
                                             <th>Action</th>
@@ -69,7 +70,13 @@
                                             <td>{{$key+1}}</td>
                                             <td><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></td>
                                             <td>{{$post->category->name}}</td>
-                                        <td><a href="{{route('admin.post.like.users', $post->id)}}" class="btn btn-danger" type="button"> <i class="fa fa-heart"></i> {{$post->likedUsers->count()}}</a> <button class="btn btn-info" type="button"><i class="fa fa-eye"></i> {{$post->view_count}}</button></td>
+                                            <td>@if ($post->status)
+                                                <button type="button" class="btn btn-success m-l-10 m-b-10">Published</button>
+                                            @else
+                                                <button type="button" class="btn btn-warning m-l-10 m-b-10">Draft</button>
+                                            @endif
+                                            </td>
+                                           <td><a href="{{route('admin.post.like.users', $post->id)}}" class="btn btn-danger" type="button"> <i class="fa fa-heart"></i> {{$post->likedUsers->count()}}</a> <button class="btn btn-info" type="button"><i class="fa fa-eye"></i> {{$post->view_count}}</button></td>
                                             <td>{{$post->created_at}}</td>
                                             <td>
                                                 <!-- Button trigger modal -->

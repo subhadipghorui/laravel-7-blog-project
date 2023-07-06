@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Email veriffy - Myiotlab
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">

@@ -95,7 +95,7 @@
     <div class="container">
         <div class="post">
             <img src="{{asset('storage/post/'.$post->image)}}" alt="post">
-            <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, similique.</h2>
+            <h2>{{$post->title}}</h2>
             <div class="post-info">
                 <h2>{{$post->category->name}}</h2>
                 <div class="author">

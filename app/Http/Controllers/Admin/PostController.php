@@ -86,7 +86,7 @@ class PostController extends Controller
         $post->save();
 
         // Notification by mail
-        if($post->status){
+        if($request->notify){
             $users = User::all();
             foreach($users as $user){
                 // Mail::to($user->email)->queue(new NewPost($post));
@@ -194,7 +194,7 @@ class PostController extends Controller
         }
         $post->save();
          // Notification by mail
-         if($post->status){
+         if($request->notify){
             $users = User::all();
             foreach($users as $user){
                 // Mail::to($user->email)->queue(new NewPost($post));
